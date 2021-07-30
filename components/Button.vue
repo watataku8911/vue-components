@@ -22,4 +22,9 @@ export default {
   color: #fff;
   border-style: none;
 }
+
+.button:disabled {
+  background: #efefef;
+  opacity: 0.8;
+}
 </style>
