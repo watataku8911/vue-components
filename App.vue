@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <div class="contents">
     <!--テキストフィールド -->
     <TextInput
       v-model="text"
       type="text"
       placeholder="テキストボックス"
-      @input="inputText"
+      :value="text"
     />
 
     <!--パスワード-->
@@ -13,7 +13,7 @@
       v-model="pass"
       type="password"
       placeholder="パスワード"
-      @input="inputPass"
+      :value="pass"
     />
 
     <!-- テキストエリア -->
@@ -23,12 +23,11 @@
       cols="76"
       rows="5"
       :value="textarea"
-      @input="inputArea"
     />
 
+    <!-- チェックボックス -->
     <CheckBox v-model="checked" :checked="checked" />
-    <p v-if="!checked">ボタンが押せません</p>
-    <p v-else>ボタンが押せます</p>
+    <label>同意</label><br />
     <!-- ボタン -->
     <Button :disabled="!checked" msg="ボタン" @push="click" />
   </div>
@@ -56,24 +55,19 @@ export default {
     };
   },
   methods: {
-    inputText(input) {
-      this.text = input;
-    },
-    inputPass(input) {
-      this.pass = input;
-    },
-    inputArea(input) {
-      this.textarea = input;
-    },
-
     click() {
-      console.log("クリックしました");
-      console.log(this.textarea);
-      console.log(this.pass);
-      console.log(this.text);
+      console.log("テキストボックスの入力内容：", this.text);
+      console.log("パスワードの入力内容：", this.pass);
+      console.log("テキストエリアの入力内容：", this.textarea);
     },
   },
 };
 </script>
 
-<style></style>
+<style>
+.contents {
+  width: 80%;
+  margin: 0% auto;
+  text-align: center;
+}
+</style>
