@@ -25,9 +25,15 @@
       :value="textarea"
     />
 
+    <!-- ラジオボタン -->
+    <RadioButton v-model="checkName" :options="options" />
+    <span>選択オプション: {{ checkName }}</span>
+    <div class="module--spacing--small"></div>
+
     <!-- チェックボックス -->
     <CheckBox v-model="checked" :checked="checked" />
     <label>同意</label><br />
+
     <!-- ボタン -->
     <Button :disabled="!checked" msg="ボタン" @push="click" />
   </div>
@@ -37,6 +43,7 @@
 import TextInput from "./components/TextInput.vue";
 import TextArea from "./components/TextArea.vue";
 import CheckBox from "./components/CheckBox.vue";
+import RadioButton from "./components/RadioButton.vue";
 import Button from "./components/Button.vue";
 
 export default {
@@ -44,6 +51,7 @@ export default {
     TextInput,
     TextArea,
     CheckBox,
+    RadioButton,
     Button,
   },
   data() {
@@ -51,6 +59,12 @@ export default {
       text: "",
       pass: "",
       textarea: "",
+      checkName: "選択してね",
+      options: [
+        { label: "hoge", value: "1", checked: false },
+        { label: "bow", value: "2", checked: false },
+        { label: "fuga", value: "3", checked: false },
+      ],
       checked: false,
     };
   },
@@ -69,5 +83,9 @@ export default {
   width: 80%;
   margin: 0% auto;
   text-align: center;
+}
+
+.module--spacing--small {
+  height: 20px;
 }
 </style>
