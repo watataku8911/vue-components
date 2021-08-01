@@ -2,6 +2,7 @@
   <input
     :type="this.type"
     :placeholder="this.placeholder"
+    :name="this.name"
     :value="this.value"
     @input="updateValue"
     class="text-input"
@@ -10,7 +11,12 @@
 
 <script>
 export default {
-  props: ["type", "placeholder", "value"],
+  props: {
+    type: { type: String },
+    placeholder: { type: String },
+    name: { type: String },
+    value: { type: String },
+  },
   methods: {
     updateValue(e) {
       this.$emit("input", e.target.value);
