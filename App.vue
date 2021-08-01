@@ -4,6 +4,7 @@
     <TextInput
       v-model="text"
       type="text"
+      name="text"
       placeholder="テキストボックス"
       :value="text"
     />
@@ -12,6 +13,7 @@
     <TextInput
       v-model="pass"
       type="password"
+      name="passwd"
       placeholder="パスワード"
       :value="pass"
     />
@@ -19,6 +21,7 @@
     <!-- テキストエリア -->
     <TextArea
       v-model="textarea"
+      name="textarea"
       placeholder="テキストエリア"
       cols="76"
       rows="5"
@@ -26,8 +29,14 @@
     />
 
     <!-- ラジオボタン -->
-    <RadioButton v-model="checkName" :options="options" />
+    <RadioButton v-model="checkName" :options="optionsRadio" />
     <span>選択オプション: {{ checkName }}</span>
+    <div class="module--spacing--small"></div>
+
+    <!-- セレクトボックス -->
+    <SelextBox v-model="select" :options="optionsSelect" />
+    <span v-if="this.select == 0">選択オプション:選択してください。</span>
+    <span v-else>選択オプション: {{ select }}</span>
     <div class="module--spacing--small"></div>
 
     <!-- チェックボックス -->
@@ -44,6 +53,7 @@ import TextInput from "./components/TextInput.vue";
 import TextArea from "./components/TextArea.vue";
 import CheckBox from "./components/CheckBox.vue";
 import RadioButton from "./components/RadioButton.vue";
+import SelextBox from "./components/SelectBox.vue";
 import Button from "./components/Button.vue";
 
 export default {
@@ -52,6 +62,7 @@ export default {
     TextArea,
     CheckBox,
     RadioButton,
+    SelextBox,
     Button,
   },
   data() {
@@ -60,10 +71,16 @@ export default {
       pass: "",
       textarea: "",
       checkName: "選択してね",
-      options: [
-        { label: "hoge", value: "1", checked: false },
-        { label: "bow", value: "2", checked: false },
-        { label: "fuga", value: "3", checked: false },
+      optionsRadio: [
+        { label: "hoge", value: "1" },
+        { label: "bow", value: "2" },
+        { label: "fuga", value: "3" },
+      ],
+      select: 0,
+      optionsSelect: [
+        { label: "Vue.js", value: "1" },
+        { label: "React", value: "2" },
+        { label: "Angular", value: "3" },
       ],
       checked: false,
     };
