@@ -39,6 +39,9 @@
     <span v-else>選択オプション: {{ select }}</span>
     <div class="module--spacing--small"></div>
 
+    <!-- 画像アップローダー（プレビュー付き） -->
+    <UploadPreview @imageName="setImageName" />
+
     <!-- チェックボックス -->
     <CheckBox v-model="checked" :checked="checked" />
     <label>同意</label><br />
@@ -54,6 +57,7 @@ import TextArea from "./components/TextArea.vue";
 import CheckBox from "./components/CheckBox.vue";
 import RadioButton from "./components/RadioButton.vue";
 import SelextBox from "./components/SelectBox.vue";
+import UploadPreview from "./components/UploadPreview.vue";
 import Button from "./components/Button.vue";
 
 export default {
@@ -63,6 +67,7 @@ export default {
     CheckBox,
     RadioButton,
     SelextBox,
+    UploadPreview,
     Button,
   },
   data() {
@@ -82,14 +87,20 @@ export default {
         { label: "React", value: "2" },
         { label: "Angular", value: "3" },
       ],
+      imageName: "",
       checked: false,
     };
   },
   methods: {
+    setImageName(imageName) {
+      this.imageName = imageName;
+    },
     click() {
       console.log("テキストボックスの入力内容：", this.text);
       console.log("パスワードの入力内容：", this.pass);
       console.log("テキストエリアの入力内容：", this.textarea);
+
+      console.log("画像の名前：", this.imageName);
     },
   },
 };
@@ -100,9 +111,5 @@ export default {
   width: 80%;
   margin: 0% auto;
   text-align: center;
-}
-
-.module--spacing--small {
-  height: 20px;
 }
 </style>
