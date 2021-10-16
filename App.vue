@@ -35,7 +35,7 @@
 
     <!-- セレクトボックス -->
     <SelextBox v-model="select" :options="optionsSelect" />
-    <span v-if="this.select == 0">選択オプション:選択してください。</span>
+    <span v-if="this.select == ''">選択オプション:選択してください。</span>
     <span v-else>選択オプション: {{ select }}</span>
     <div class="module--spacing--small"></div>
 
@@ -77,15 +77,16 @@ export default {
       textarea: "",
       checkName: "選択してね",
       optionsRadio: [
-        { label: "hoge", value: "1" },
-        { label: "bow", value: "2" },
-        { label: "fuga", value: "3" },
+        { label: "hoge", value: "hoge" },
+        { label: "bow", value: "bow" },
+        { label: "fuga", value: "fuga" },
       ],
       select: 0,
+      selectValue: "",
       optionsSelect: [
-        { label: "Vue.js", value: "1" },
-        { label: "React", value: "2" },
-        { label: "Angular", value: "3" },
+        { label: "Vue.js", value: "Vue.js" },
+        { label: "React", value: "React" },
+        { label: "Angular", value: "Angular" },
       ],
       imageName: "",
       checked: false,
@@ -95,6 +96,7 @@ export default {
     setImageName(imageName) {
       this.imageName = imageName;
     },
+
     click() {
       console.log("テキストボックスの入力内容：", this.text);
       console.log("パスワードの入力内容：", this.pass);
