@@ -103,7 +103,8 @@ export default {
         { label: "React", value: "React" },
         { label: "Angular", value: "Angular" },
       ],
-      imageUrl: "",
+      imageUrl: ""
+      fileList: null,
       checked: false,
       open: false,
     };
@@ -126,7 +127,7 @@ export default {
       alert("コンソールを見ろ！！");
       this.open = false;
       this.checked = false;
-    },
+    }
   },
 };
 </script>
@@ -137,7 +138,6 @@ export default {
   margin: 0% auto;
   text-align: center;
 }
-
 @media screen and (min-width: 1026px) {
   .imgContent {
     width: 90%;
