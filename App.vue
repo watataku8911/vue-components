@@ -40,14 +40,25 @@
     <div class="module--spacing--small"></div>
 
     <!-- 画像アップローダー（プレビュー付き） -->
-    <UploadPreview @imageName="setImageName" />
+    <div class="imgContent">
+      <ImagePreview :imageUrl="imageUrl" />
+      <div class="module--spacing--largeSmall"></div>
+      <UploadFile @fileList="setFileList" />
+    </div>
 
     <!-- チェックボックス -->
     <CheckBox v-model="checked" :checked="checked" />
     <label>同意</label><br />
 
     <!-- ボタン -->
-    <Button :disabled="!checked" msg="ボタン" @push="click" />
+    <Button :disabled="!checked" msg="モーダルが出ます" @push="click" />
+    <Modal
+      title="モーダルタイトル"
+      detail="モーダルの内容です。モーダルの内容です。モーダルの内容です。モーダルの内容です。モーダルの内容です。モーダルの内容です。モーダルの内容です。モーダルの内容です。モーダルの内容です。モーダルの内容です。モーダルの内容です。モーダルの内容です。モーダルの内容です。モーダルの内容です。"
+      v-if="open"
+      @close="open = false"
+      @modal-click="modalClick"
+    />
   </div>
 </template>
 
@@ -57,8 +68,10 @@ import TextArea from "./components/TextArea.vue";
 import CheckBox from "./components/CheckBox.vue";
 import RadioButton from "./components/RadioButton.vue";
 import SelextBox from "./components/SelectBox.vue";
-import UploadPreview from "./components/UploadPreview.vue";
+import ImagePreview from "./components/ImagePreview.vue";
+import UploadFile from "./components/UploadFile.vue";
 import Button from "./components/Button.vue";
+import Modal from "./components/Modal.vue";
 
 export default {
   components: {
@@ -67,8 +80,10 @@ export default {
     CheckBox,
     RadioButton,
     SelextBox,
-    UploadPreview,
+    ImagePreview,
+    UploadFile,
     Button,
+    Modal,
   },
   data() {
     return {
@@ -88,22 +103,31 @@ export default {
         { label: "React", value: "React" },
         { label: "Angular", value: "Angular" },
       ],
-      imageName: "",
+      imageUrl: ""
+      fileList: null,
       checked: false,
+      open: false,
     };
   },
   methods: {
-    setImageName(imageName) {
-      this.imageName = imageName;
+    setFileList(fileList) {
+      this.fileList = fileList;
+      const imageUrl = URL.createObjectURL(fileList[0]);
+      this.imageUrl = imageUrl;
     },
 
     click() {
+      this.open = true;
+    },
+    modalClick() {
       console.log("テキストボックスの入力内容：", this.text);
       console.log("パスワードの入力内容：", this.pass);
       console.log("テキストエリアの入力内容：", this.textarea);
-
-      console.log("画像の名前：", this.imageName);
-    },
+      console.log("画像の名前：", this.fileList[0].name);
+      alert("コンソールを見ろ！！");
+      this.open = false;
+      this.checked = false;
+    }
   },
 };
 </script>
@@ -113,5 +137,40 @@ export default {
   width: 80%;
   margin: 0% auto;
   text-align: center;
+}
+@media screen and (min-width: 1026px) {
+  .imgContent {
+    width: 90%;
+    max-width: 700px;
+    height: 35vh;
+    margin: auto;
+    margin-bottom: 10px;
+    background-color: #ccc;
+    padding-top: 5%;
+  }
+}
+
+@media screen and (min-width: 482px) and (max-width: 1025px) {
+  .imgContent {
+    width: 90%;
+    max-width: 700px;
+    height: 20vh;
+    margin: auto;
+    margin-bottom: 10px;
+    background-color: #ccc;
+    padding-top: 5%;
+  }
+}
+
+@media screen and (max-width: 481px) {
+  .imgContent {
+    width: 90%;
+    max-width: 700px;
+    height: 200px;
+    margin: auto;
+    margin-bottom: 10px;
+    background-color: #ccc;
+    padding-top: 5%;
+  }
 }
 </style>
