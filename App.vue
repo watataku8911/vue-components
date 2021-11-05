@@ -128,14 +128,13 @@ export default {
       this.open = false;
       this.checked = false;
 
-      // firebase strageに登録する
       // this.uploadImage();
     },
     uploadImage() {
       // let blob = new Blob(this.fileList, { type: "image/jpeg" });
       
       // const fileName;
-      // fileName = this.genalateRandomFilename()
+      // fileName = this.genalateRandomFileName()
       
       // const uploadRef = storage.ref("images").child(fileName);
       // const uploadTask = uploadRef.put(blob);
@@ -151,7 +150,7 @@ export default {
     },
 
     // Generate random 16 digits strings
-    genalateRandomFilename() {
+    genalateRandomFileName() {
       // const S =
       //   "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
       // const N = 16;
