@@ -103,7 +103,7 @@ export default {
         { label: "React", value: "React" },
         { label: "Angular", value: "Angular" },
       ],
-      imageUrl: ""
+      imageUrl: "",
       fileList: null,
       checked: false,
       open: false,
@@ -127,7 +127,39 @@ export default {
       alert("コンソールを見ろ！！");
       this.open = false;
       this.checked = false;
-    }
+
+      // firebase strageに登録する
+      // this.uploadImage();
+    },
+    uploadImage() {
+      // let blob = new Blob(this.fileList, { type: "image/jpeg" });
+      
+      // const fileName;
+      // fileName = this.genalateRandomFilename()
+      
+      // const uploadRef = storage.ref("images").child(fileName);
+      // const uploadTask = uploadRef.put(blob);
+      // uploadTask
+      //   .then(() => {
+      //     uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+      //       /* firebase strageのダウンロード先のURLが帰ってくる */
+      //     });
+      //   })
+      //   .catch(() => {
+      //     /* firebase strageに保存失敗 */
+      //   });
+    },
+
+    // Generate random 16 digits strings
+    genalateRandomFilename() {
+      // const S =
+      //   "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+      // const N = 16;
+      // const fileName = Array.from(crypto.getRandomValues(new Uint32Array(N)))
+      //   .map((n) => S[n % S.length])
+      //   .join("");
+      // return fileName;
+    },
   },
 };
 </script>
@@ -138,6 +170,7 @@ export default {
   margin: 0% auto;
   text-align: center;
 }
+
 @media screen and (min-width: 1026px) {
   .imgContent {
     width: 90%;
