@@ -17,9 +17,16 @@ export default {
 
 <style scoped>
 .button {
+  border-radius: 10px;
+  padding: 1%;
   font-size: 1em;
   background-color: #71ff71;
   color: #fff;
   border-style: none;
+}
+
+.button:disabled {
+  background: #efefef;
+  opacity: 0.8;
 }
 </style>

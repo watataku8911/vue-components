@@ -4,6 +4,7 @@
     :placeholder="this.placeholder"
     :cols="this.cols"
     :rows="this.rows"
+    :name="this.name"
     @input="updateValue"
     :value="this.value"
   >
@@ -12,7 +13,13 @@
 
 <script>
 export default {
-  props: ["placeholder", "cols", "rows", "value"],
+  props: {
+    placeholder: { type: String },
+    cols: { type: String },
+    rows: { type: String },
+    name: { type: String },
+    value: { type: String },
+  },
   methods: {
     updateValue(e) {
       this.$emit("input", e.target.value);
