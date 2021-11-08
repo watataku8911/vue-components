@@ -133,7 +133,7 @@ export default {
     uploadImage() {
       // let blob = new Blob(this.fileList, { type: "image/jpeg" });
       
-      // const fileName;
+      // let fileName;
       // fileName = this.genalateRandomFileName()
       
       // const uploadRef = storage.ref("images").child(fileName);
