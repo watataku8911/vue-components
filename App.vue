@@ -34,7 +34,7 @@
     <div class="module--spacing--small"></div>
 
     <!-- セレクトボックス -->
-    <SelextBox v-model="select" :options="optionsSelect" />
+    <SelectBox v-model="select" :options="optionsSelect" />
     <span v-if="this.select == ''">選択オプション:選択してください。</span>
     <span v-else>選択オプション: {{ select }}</span>
     <div class="module--spacing--small"></div>
@@ -67,7 +67,7 @@ import TextInput from "./components/TextInput.vue";
 import TextArea from "./components/TextArea.vue";
 import CheckBox from "./components/CheckBox.vue";
 import RadioButton from "./components/RadioButton.vue";
-import SelextBox from "./components/SelectBox.vue";
+import SelectBox from "./components/SelectBox.vue";
 import ImagePreview from "./components/ImagePreview.vue";
 import UploadFile from "./components/UploadFile.vue";
 import Button from "./components/Button.vue";
@@ -79,7 +79,7 @@ export default {
     TextArea,
     CheckBox,
     RadioButton,
-    SelextBox,
+    SelectBox,
     ImagePreview,
     UploadFile,
     Button,
