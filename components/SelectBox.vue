@@ -1,5 +1,5 @@
 <template>
-  <select name="name" @change="updateValue">
+  <select :name="name" @change="updateValue">
     <option disabled value="">選択してください</option>
     <option
       v-for="(option, index) in options"
