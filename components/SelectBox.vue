@@ -1,6 +1,6 @@
 <template>
-  <select name="select-box" @input="updateValue">
-    <option value="0">選択してください</option>
+  <select name="name" @change="updateValue">
+    <option disabled value="">選択してください</option>
     <option
       v-for="(option, index) in options"
       :key="index"
@@ -13,6 +13,7 @@
 <script>
 export default {
   props: {
+    name: { type: String, required: true },
     options: { type: Array, required: true },
   },
   methods: {
