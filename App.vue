@@ -34,7 +34,7 @@
     <div class="module--spacing--small"></div>
 
     <!-- セレクトボックス -->
-    <SelectBox v-model="select" :options="optionsSelect" />
+    <SelectBox v-model="select" name="select-box" :options="optionsSelect" />
     <span v-if="this.select == ''">選択オプション:選択してください。</span>
     <span v-else>選択オプション: {{ select }}</span>
     <div class="module--spacing--small"></div>
