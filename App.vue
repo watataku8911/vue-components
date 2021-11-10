@@ -30,11 +30,13 @@
 
     <!-- ラジオボタン -->
     <RadioButton v-model="checkName" :options="optionsRadio" />
+    <div class="module--spacing--verySmall"></div>
     <span>選択オプション: {{ checkName }}</span>
     <div class="module--spacing--small"></div>
 
     <!-- セレクトボックス -->
-    <SelectBox v-model="select" name="select-box" :options="optionsSelect" />
+    <SelectBox :select="select" :options="optionsSelect" @input="setSelect" />
+    <div class="module--spacing--verySmall"></div>
     <span v-if="this.select == ''">選択オプション:選択してください。</span>
     <span v-else>選択オプション: {{ select }}</span>
     <div class="module--spacing--small"></div>
@@ -110,6 +112,12 @@ export default {
     };
   },
   methods: {
+    // セレクトボックスでチェンジしたら実行されるメソッド
+    setSelect(input) {
+      this.select = input;
+    },
+
+    // 画像がドロップされたら実行されるメソッド
     setFileList(fileList) {
       this.fileList = fileList;
       const imageUrl = URL.createObjectURL(fileList[0]);
@@ -132,10 +140,8 @@ export default {
     },
     uploadImage() {
       // let blob = new Blob(this.fileList, { type: "image/jpeg" });
-      
-      // let fileName;
+      // const fileName;
       // fileName = this.genalateRandomFileName()
-      
       // const uploadRef = storage.ref("images").child(fileName);
       // const uploadTask = uploadRef.put(blob);
       // uploadTask
