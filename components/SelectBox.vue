@@ -1,8 +1,8 @@
 <template>
-  <select :name="name" @change="updateValue">
-    <option disabled value="">選択してください</option>
+  <select :name="this.name" @input="updateValue" :select="this.select">
+    <option value="0">選択してください</option>
     <option
-      v-for="(option, index) in options"
+      v-for="(option, index) in this.options"
       :key="index"
       :value="option.value"
       >{{ option.label }}</option
@@ -13,6 +13,7 @@
 <script>
 export default {
   props: {
+    select: { type: Number, required: true },
     name: { type: String, required: true },
     options: { type: Array, required: true },
   },
@@ -23,10 +24,3 @@ export default {
   },
 };
 </script>
-
-<style>
-select {
-  text-align: center;
-  display: block;
-}
-</style>
