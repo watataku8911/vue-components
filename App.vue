@@ -104,6 +104,7 @@ export default {
         { label: "Angular", value: "Angular" },
       ],
       imageUrl: "",
+      fileList: null,
       checked: false,
       open: false,
     };
@@ -126,6 +127,35 @@ export default {
       alert("コンソールを見ろ！！");
       this.open = false;
       this.checked = false;
+
+      // this.uploadImage();
+    },
+    uploadImage() {
+      // let blob = new Blob(this.fileList, { type: "image/jpeg" });
+      // const fileName;
+      // fileName = this.genalateRandomFileName()
+      // const uploadRef = storage.ref("images").child(fileName);
+      // const uploadTask = uploadRef.put(blob);
+      // uploadTask
+      //   .then(() => {
+      //     uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+      //       /* firebase strageのダウンロード先のURLが帰ってくる */
+      //     });
+      //   })
+      //   .catch(() => {
+      //     /* firebase strageに保存失敗 */
+      //   });
+    },
+
+    // Generate random 16 digits strings
+    genalateRandomFileName() {
+      // const S =
+      //   "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+      // const N = 16;
+      // const fileName = Array.from(crypto.getRandomValues(new Uint32Array(N)))
+      //   .map((n) => S[n % S.length])
+      //   .join("");
+      // return fileName;
     },
   },
 };
