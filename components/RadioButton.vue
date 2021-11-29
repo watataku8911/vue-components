@@ -17,10 +17,11 @@ export default {
   props: {
     options: { type: Array, required: true },
   },
-  methods: {
-    updateValue(e) {
-      this.$emit("input", e.target.value);
-    },
+  setup(_, context) {
+    const updateValue = (e) => {
+      context.emit("update:modalValue", e.target.value);
+    };
+    return { updateValue };
   },
 };
 </script>

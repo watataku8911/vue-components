@@ -1,11 +1,11 @@
 <template>
   <transition name="modal">
-    <div class="overlay" @click="$emit('close')">
+    <div class="overlay" @click="handleClose">
       <div class="panel" @click.stop>
-        <h2>{{ this.title }}</h2>
+        <h2>{{ title }}</h2>
         <div class="module--spacing--small"></div>
         <div class="modal-contents">
-          <p>{{ this.detail }}</p>
+          <p>{{ detail }}</p>
         </div>
         <Button :disabled="false" msg="ボタン" @push="click" />
       </div>
@@ -16,14 +16,27 @@
 <script>
 import Button from "./Button.vue";
 export default {
-  props: ["title", "detail"],
+  props: {
+    title: {
+      type: String,
+      required: true,
+    },
+    detail: {
+      type: String,
+      required: true,
+    },
+  },
   components: {
     Button,
   },
-  methods: {
-    click() {
-      this.$emit("modal-click");
-    },
+  setup(_, context) {
+    const handleClose = () => {
+      context.emit("close");
+    };
+    const click = () => {
+      context.emit("modal-click");
+    };
+    return { handleClose, click };
   },
 };
 </script>

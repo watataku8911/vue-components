@@ -1,12 +1,17 @@
 <template>
   <div class="imagePreview">
-    <img :src="this.imageUrl" width="50" height="50" alt />
+    <img :src="imageUrl" width="50" height="50" alt />
   </div>
 </template>
 
 <script>
 export default {
-  props: ["imageUrl"],
+  props: {
+    imageUrl: {
+      type: String,
+      required: true,
+    },
+  },
 };
 </script>
 <style scoped>
