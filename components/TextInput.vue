@@ -1,26 +1,27 @@
 <template>
   <input
-    :type="this.type"
-    :placeholder="this.placeholder"
-    :name="this.name"
-    :value="this.value"
-    @input="updateValue"
     class="text-input"
+    :type="type"
+    :placeholder="placeholder"
+    :name="name"
+    :value="value"
+    @input="updateValue"
   />
 </template>
 
 <script>
 export default {
   props: {
-    type: { type: String },
-    placeholder: { type: String },
-    name: { type: String },
-    value: { type: String },
+    type: { type: String, required: true },
+    placeholder: { type: String, required: true },
+    name: { type: String, required: true },
+    value: { type: String, required: true },
   },
-  methods: {
-    updateValue(e) {
-      this.$emit("input", e.target.value);
-    },
+  setup(_, context) {
+    const updateValue = (e) => {
+      context.emit("update:modalValue", e.target.value);
+    };
+    return { updateValue };
   },
 };
 </script>

@@ -4,7 +4,7 @@
     <input
       type="file"
       class="file_input"
-      style="display:none;"
+      style="display: none"
       id="corporation_file"
       mulitple="multiple"
       @change="onDrop"
@@ -14,12 +14,18 @@
 
 <script>
 export default {
-  methods: {
-    onDrop(e) {
+  //   name: "UploadFile",
+  // methods: {
+  //   onDrop() {
+  //     alert("unko");
+  //   },
+  // },
+  setup(_, context) {
+    const onDrop = (e) => {
       const imageFile = e.target.files;
-      // const imageUrl = URL.createObjectURL(imageFile[0]);
-      this.$emit("fileList", imageFile);
-    },
+      context.emit("fileList", imageFile);
+    };
+    return { onDrop };
   },
 };
 </script>
