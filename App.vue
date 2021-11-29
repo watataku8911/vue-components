@@ -115,6 +115,7 @@ export default {
       const imgUrl = URL.createObjectURL(fileList[0]);
       form.imageUrl = imgUrl;
     };
+
     const handleOpen = () => {
       form.open = true;
     };

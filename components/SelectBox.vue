@@ -2,7 +2,7 @@
   <select :name="name" @input="updateValue">
     <option value="0">選択してください</option>
     <option
-      v-for="(option, index) in options"
+      v-for="(option, index) in this.options"
       :key="index"
       :value="option.value"
     >
