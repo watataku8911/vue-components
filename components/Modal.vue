@@ -29,6 +29,7 @@ export default {
   components: {
     Button,
   },
+  emits: ["close", "modal-click"],
   setup(_, context) {
     const handleClose = () => {
       context.emit("close");

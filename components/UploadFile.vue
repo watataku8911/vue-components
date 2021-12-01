@@ -14,16 +14,13 @@
 
 <script>
 export default {
-  //   name: "UploadFile",
-  // methods: {
-  //   onDrop() {
-  //     alert("unko");
-  //   },
-  // },
+  emits: ["fileList"],
   setup(_, context) {
     const onDrop = (e) => {
       const imageFile = e.target.files;
-      context.emit("fileList", imageFile);
+      if (imageFile) {
+        context.emit("fileList", imageFile);
+      }
     };
     return { onDrop };
   },

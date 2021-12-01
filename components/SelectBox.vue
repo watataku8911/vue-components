@@ -17,6 +17,7 @@ export default {
     name: { type: String, required: true },
     options: { type: Array, required: true },
   },
+  emits: ["update:select"],
   setup(_, context) {
     const updateValue = (e) => {
       context.emit("update:select", e.target.value);
