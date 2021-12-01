@@ -124,7 +124,7 @@ export default {
         alert("テキストボックスかパスワードかテキストエリアが未入力です");
         form.open = false;
         form.checked = false;
-      } else if (form.fileList) {
+      } else if (form.fileList == null) {
         alert("画像が選択されていません");
         form.open = false;
         form.checked = false;
