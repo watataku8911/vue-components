@@ -14,6 +14,7 @@ export default {
       required: true,
     },
   },
+  emits: ["update:change"],
   setup(_, context) {
     const updateValue = (e) => {
       context.emit("update:change", e.target.checked);

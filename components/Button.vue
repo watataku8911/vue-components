@@ -12,6 +12,7 @@ export default {
       required: true,
     },
   },
+  emits: ["push"],
   setup(_, context) {
     const push = () => {
       context.emit("push");

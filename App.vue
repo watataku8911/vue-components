@@ -20,7 +20,7 @@
     name="textarea"
     placeholder="テキストエリア"
     cols="86"
-    rows="7"
+    rows="5"
     :value="form.textarea"
   />
 
@@ -120,14 +120,24 @@ export default {
       form.open = true;
     };
     const modalClick = () => {
-      console.log("テキストボックスの入力内容：", form.text);
-      console.log("パスワードの入力内容：", form.pass);
-      console.log("テキストエリアの入力内容：", form.textarea);
-      console.log("画像の名前：", form.fileList[0].name);
-      alert("コンソールを見ろ！！");
-      form.open = false;
-      form.checked = false;
-      //uploadImage();
+      if (form.text.length == 0 && form.pass == 0 && form.textarea == 0) {
+        alert("テキストボックスかパスワードかテキストエリアが未入力です");
+        form.open = false;
+        form.checked = false;
+      } else if (form.fileList) {
+        alert("画像が選択されていません");
+        form.open = false;
+        form.checked = false;
+      } else {
+        console.log("テキストボックスの入力内容：", form.text);
+        console.log("パスワードの入力内容：", form.pass);
+        console.log("テキストエリアの入力内容：", form.textarea);
+        console.log("画像の名前：", form.fileList[0].name);
+        alert("コンソールを見ろ！！");
+        form.open = false;
+        form.checked = false;
+        //uploadImage();
+      }
     };
     // const uploadImage = () => {
     //   let blob = new Blob(form.fileList, { type: "image/jpeg" });

@@ -17,6 +17,7 @@ export default {
   props: {
     options: { type: Array, required: true },
   },
+  emits: ["update:modalValue"],
   setup(_, context) {
     const updateValue = (e) => {
       context.emit("update:modalValue", e.target.value);

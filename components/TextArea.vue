@@ -20,6 +20,7 @@ export default {
     name: { type: String, required: true },
     value: { type: String, required: true },
   },
+  emits: ["update:modalValue"],
   setup(_, context) {
     const updateValue = (e) => {
       context.emit("update:modalValue", e.target.value);
