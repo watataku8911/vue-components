@@ -120,15 +120,24 @@ export default {
       this.open = true;
     },
     modalClick() {
-      console.log("テキストボックスの入力内容：", this.text);
-      console.log("パスワードの入力内容：", this.pass);
-      console.log("テキストエリアの入力内容：", this.textarea);
-      console.log("画像の名前：", this.fileList[0].name);
-      alert("コンソールを見ろ！！");
-      this.open = false;
-      this.checked = false;
-
-      // this.uploadImage();
+       if (this.text.length == 0 && this.pass == 0 && this.textarea == 0) {
+        alert("テキストボックスかパスワードかテキストエリアが未入力です");
+        form.open = false;
+        form.checked = false;
+      } else if (this.fileList) {
+        alert("画像が選択されていません");
+        form.open = false;
+        form.checked = false;
+      } else {
+        console.log("テキストボックスの入力内容：", form.text);
+        console.log("パスワードの入力内容：", form.pass);
+        console.log("テキストエリアの入力内容：", form.textarea);
+        console.log("画像の名前：", form.fileList[0].name);
+        alert("コンソールを見ろ！！");
+        form.open = false;
+        form.checked = false;
+        //uploadImage();
+      }
     },
     uploadImage() {
       // let blob = new Blob(this.fileList, { type: "image/jpeg" });
