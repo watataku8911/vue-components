@@ -120,7 +120,11 @@ export default {
       form.open = true;
     };
     const modalClick = () => {
-      if (form.text.length == 0 && form.pass == 0 && form.textarea == 0) {
+      if (
+        form.text.length == 0 &&
+        form.pass.length == 0 &&
+        form.textarea.length == 0
+      ) {
         alert("テキストボックスかパスワードかテキストエリアが未入力です");
         form.open = false;
         form.checked = false;
