@@ -120,7 +120,7 @@ export default {
       this.open = true;
     },
     modalClick() {
-       if (this.text.length == 0 && this.pass == 0 && this.textarea == 0) {
+       if (this.text.length == 0 && this.pass.length == 0 && this.textarea.length == 0) {
         alert("テキストボックスかパスワードかテキストエリアが未入力です");
         form.open = false;
         form.checked = false;
