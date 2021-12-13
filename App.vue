@@ -1,4 +1,7 @@
 <template>
+  <div class="chip-area">
+    <Chip msg="コメント" />
+  </div>
   <TextInput
     v-model:modalValue="form.text"
     type="text"
@@ -30,7 +33,7 @@
   />
   <div class="module--spacing--verySmall"></div>
   <span>選択オプション: {{ form.checkName }}</span>
-  <div class="module--spacing--small"></div>
+  <div class="module--spacing--verySmall"></div>
 
   <SelectBox
     v-model:select="form.select"
@@ -63,6 +66,7 @@
 
 <script>
 import { reactive } from "vue";
+import Chip from "./components/Chip.vue";
 import TextInput from "./components/TextInput.vue";
 import TextArea from "./components/TextArea.vue";
 import RadioButton from "./components/RadioButton.vue";
@@ -76,6 +80,7 @@ import Modal from "./components/Modal.vue";
 export default {
   name: "App",
   components: {
+    Chip,
     TextInput,
     TextArea,
     RadioButton,
@@ -115,7 +120,6 @@ export default {
       const imgUrl = URL.createObjectURL(fileList[0]);
       form.imageUrl = imgUrl;
     };
-
     const handleOpen = () => {
       form.open = true;
     };
@@ -202,6 +206,13 @@ export default {
 
 .module--spacing--veryLarge {
   height: 40px;
+}
+
+.chip-area {
+  position: absolute;
+  top: 10vh;
+  right: 1vh;
+  transform: rotate(10deg);
 }
 @media screen and (min-width: 1026px) {
   .imgContent {
