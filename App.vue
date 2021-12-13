@@ -1,4 +1,7 @@
 <template>
+  <div class="chip-area">
+    <Chip msg="コメント" />
+  </div>
   <TextInput
     v-model:modalValue="form.text"
     type="text"
@@ -30,7 +33,7 @@
   />
   <div class="module--spacing--verySmall"></div>
   <span>選択オプション: {{ form.checkName }}</span>
-  <div class="module--spacing--small"></div>
+  <div class="module--spacing--verySmall"></div>
 
   <SelectBox
     v-model:select="form.select"
@@ -63,6 +66,7 @@
 
 <script>
 import { reactive } from "vue";
+import Chip from "./components/Chip.vue";
 import TextInput from "./components/TextInput.vue";
 import TextArea from "./components/TextArea.vue";
 import RadioButton from "./components/RadioButton.vue";
@@ -76,6 +80,7 @@ import Modal from "./components/Modal.vue";
 export default {
   name: "App",
   components: {
+    Chip,
     TextInput,
     TextArea,
     RadioButton,
@@ -115,16 +120,19 @@ export default {
       const imgUrl = URL.createObjectURL(fileList[0]);
       form.imageUrl = imgUrl;
     };
-
     const handleOpen = () => {
       form.open = true;
     };
     const modalClick = () => {
-      if (form.text.length == 0 && form.pass == 0 && form.textarea == 0) {
+      if (
+        form.text.length == 0 &&
+        form.pass.length == 0 &&
+        form.textarea.length == 0
+      ) {
         alert("テキストボックスかパスワードかテキストエリアが未入力です");
         form.open = false;
         form.checked = false;
-      } else if (form.fileList) {
+      } else if (form.fileList == null) {
         alert("画像が選択されていません");
         form.open = false;
         form.checked = false;
@@ -198,6 +206,13 @@ export default {
 
 .module--spacing--veryLarge {
   height: 40px;
+}
+
+.chip-area {
+  position: absolute;
+  top: 10vh;
+  right: 1vh;
+  transform: rotate(10deg);
 }
 @media screen and (min-width: 1026px) {
   .imgContent {
